@@ -1,26 +1,30 @@
+
+
 <?php
-$name = $_POST['name'];
-$email = $_POST['email'];
-$phone = $_POST['phone'];
-$message = $_POST['message'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recoger los datos del formulario
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $message = $_POST["message"];
 
+    // Configurar el destinatario del correo
+    $to = "angelaaguirre2008@gmail.com";
+    $subject = "New message";
 
-$header = 'From: ' . $email . " \r\n";
-$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
-$header .= "Mime-Version: 1.0 \r\n";
-$header .= "Content-Type: text/plain";
+    // Construir el cuerpo del correo
+    $message_body = "Nombre: $name\n";
+    $message_body .= "Correo electrónico: $email\n";
+    $message_body .= "Teléfono: $phone\n\n";
+    $message_body .= "Mensaje:\n$message";
 
-$message = "Este mensaje fue enviado por: " . $name . " \r\n";
-$message .= "Su e-mail es: " . $email . " \r\n";
-$message .= "Teléfono de contacto: " . $phone . " \r\n";
-$message .= "Mensaje: " . $_POST['message'] . " \r\n";
-$message .= "Enviado el: " . date('d/m/Y', time());
+    // Enviar el correo
+    mail($to, $subject, $message_body);
 
-$para = 'angelaaguirre2008@gmail.com';
-$asunto = 'Contacto web';
-
-email($para, $asunto, utf8_decode($message), $header);
-
-header("Location:index.html");
+    // Puedes redirigir al usuario a una página de confirmación
+    header("Location: confirmacion.html");
+    exit();
+}
 ?>
+
 

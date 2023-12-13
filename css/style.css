@@ -385,9 +385,9 @@ img {
 
 .main-decorated-box {
 	position: relative;
-	background-color: rgba(0, 167, 157, 0.7); /* Ajusta el valor de opacidad según tus preferencias */
-	border-radius: 10px; /* Ajusta el radio del borde según tus preferencias */
-	padding: 20px; /* Ajusta el relleno según tus preferencias */
+	background-color: rgba(0, 167, 157, 0.6); 
+	border-radius: 10px; 
+	padding: 20px; 
 }
 
 
